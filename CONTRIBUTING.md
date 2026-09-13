@@ -20,7 +20,7 @@ You can contribute by:
 * Updating existing bank information
 * Fixing incorrect bank codes
 * Adding `ussd`, `website`, and `support_email` - where available
-* Adding bank logos
+* Adding or updating brand entries for logo support
 * improving validation scripts
 * Reporting data errors
 * Building SDKs or APIs using the dataset
@@ -37,6 +37,7 @@ africa-bank-data/
 │
 ├── data/
 │   ├── index.json
+│   ├── brands.json
 │   ├── NG/
 │   │   ├── banks.json
 │   │   └── metadata.json
@@ -46,11 +47,6 @@ africa-bank-data/
 │   └── GH/
 │       ├── banks.json
 │       └── metadata.json
-│
-├── logos/
-│   ├── NG/
-│   ├── KE/
-│   └── GH/
 │
 ├── packages/
 │   ├── js-sdk/
@@ -140,6 +136,28 @@ data/UG/
 
 ### Optional Fields
 
+| Field       | Description                                      |
+| ----------- | ------------------------------------------------ |
+| brand_slug  | Shared brand identifier from `data/brands.json`    |
+| ussd        | USSD banking code                                |
+| nip_code    | NIP institution code                             |
+| aliases     | Alternative bank names                           |
+
+### Brand and logo fields
+
+Banks that share a corporate identity across countries should use the same `brand_slug` and point to a single entry in `data/brands.json`. Logo URLs are built at runtime from the brand `domain` using Brandfetch.
+
+Example:
+
+```json
+{
+  "name": "Ecobank Ghana",
+  "slug": "ecobank-ghana",
+  "brand_slug": "ecobank"
+}
+```
+
+Do not commit Brandfetch client IDs to the repository. See [docs/LOGOS.md](./docs/LOGOS.md) for the full guide.
 | Field | Description |
 |------|------------|
 | short_name | Short display name |
@@ -197,6 +215,72 @@ Before opening a PR, ensure:
 
 ---
 
+# Submitting a Pull Request
+
+1️⃣ Fork the repository
+2️⃣ Create a new branch
+
+```
+git checkout -b add-ghana-banks
+```
+
+3️⃣ Make your changes
+
+4️⃣ Commit your changes
+
+```
+git commit -m "Add Ghana banks dataset"
+```
+
+5️⃣ Push your branch
+
+```
+git push origin add-ghana-banks
+```
+
+6️⃣ Open a Pull Request
+
+Please include a short explanation of the change.
+
+---
+
+# Reporting Issues
+
+If you find incorrect or missing data, please open an issue.
+
+Include:
+
+* the country
+* the bank name
+* the incorrect field
+* the correct information if available
+
+---
+
+# Good First Contributions
+
+If you're new to open source, try these:
+
+* add banks for your country
+* fix incorrect slugs
+* add missing USSD codes
+* improve documentation
+* add brand entries in `data/brands.json`
+
+Look for issues labeled:
+
+```
+good first issue
+help wanted
+```
+
+---
+
+# Code of Conduct
+
+We want Africa Bank Data to be **welcoming and inclusive**.
+
+Please:
 ## Naming Conventions
 
 - Country folders use uppercase ISO codes (`NG`, `KE`, `GH`)
