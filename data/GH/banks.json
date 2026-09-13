@@ -1,11 +1,14 @@
 {
+  "$schema": "../../schema/banks-file.schema.json",
   "country": "GH",
   "banks": [
     {
       "name": "Absa Bank Ghana",
       "code": "ABG",
       "slug": "absa-bank-ghana",
+      "brand_slug": "absa",
       "short_name": "Absa",
+      "ussd": "*224#",
       "website": "https://gh.absa.africa",
       "support_email": "absa.ghana@absa.africa",
       "type": "commercial",
@@ -18,7 +21,9 @@
       "name": "Access Bank Ghana",
       "code": "ABGHA",
       "slug": "access-bank-ghana",
+      "brand_slug": "access-bank",
       "short_name": "Access",
+      "ussd": "*901#",
       "website": "https://ghana.accessbankplc.com",
       "support_email": "contactcentreghana@accessbankplc.com",
       "type": "commercial",
@@ -59,7 +64,9 @@
       "name": "CalBank",
       "code": "CAL",
       "slug": "calbank",
+      "brand_slug": "calbank",
       "short_name": "CalBank",
+      "ussd": "*700#",
       "website": "https://calbank.net",
       "support_email": "customercare@calbank.net",
       "type": "commercial",
@@ -85,7 +92,9 @@
       "name": "Ecobank Ghana",
       "code": "ECOG",
       "slug": "ecobank-ghana",
+      "brand_slug": "ecobank",
       "short_name": "Ecobank",
+      "ussd": "*326#",
       "website": "https://www.ecobank.com/gh/personal-banking",
       "support_email": "ecobankgh@ecobank.com",
       "type": "commercial",
@@ -165,7 +174,9 @@
       "name": "GCB Bank",
       "code": "GCB",
       "slug": "gcb-bank",
+      "brand_slug": "gcb-bank",
       "short_name": "GCB",
+      "ussd": "*737#",
       "website": "https://www.gcbbank.com.gh",
       "support_email": "customerservice@gcbbank.com.gh",
       "type": "commercial",
@@ -327,6 +338,55 @@
       "aliases": [
         "zenith ghana",
         "zenith bank ghana limited"
+      ]
+    },
+    {
+      "name": "Standard Chartered Bank Ghana",
+      "code": "SCBK",
+      "slug": "standard-chartered-bank-ghana",
+      "short_name": "Standard Chartered",
+      "website": "https://www.sc.com/gh",
+      "type": "commercial",
+      "aliases": [
+        "standard chartered"
+      ]
+    },
+    {
+      "name": "Stanbic Bank Ghana",
+      "code": "SBG",
+      "slug": "stanbic-bank-ghana",
+      "short_name": "Stanbic",
+      "ussd": "*712#",
+      "website": "https://www.stanbicbank.co.gh",
+      "type": "commercial",
+      "aliases": [
+        "stanbic"
+      ]
+    },
+    {
+      "name": "United Bank for Africa Ghana",
+      "code": "UBAG",
+      "slug": "united-bank-for-africa-ghana",
+      "short_name": "UBA",
+      "ussd": "*919#",
+      "website": "https://www.ubaghana.com",
+      "type": "commercial",
+      "aliases": [
+        "uba ghana",
+        "uba"
+      ]
+    },
+    {
+      "name": "Fidelity Bank Ghana",
+      "code": "FBGH",
+      "slug": "fidelity-bank-ghana",
+      "short_name": "Fidelity",
+      "ussd": "*770#",
+      "website": "https://fidelitybank.com.gh",
+      "type": "commercial",
+      "aliases": [
+        "fidelity bank",
+        "fidelity ghana"
       ]
     }
   ]

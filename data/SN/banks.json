@@ -48,6 +48,86 @@
       "short_name": "Orabank",
       "website": "https://www.orabank.net",
       "type": "commercial"
+      "code": "CBAO",
+      "slug": "cbao-groupe-attijariwafa-bank",
+      "short_name": "CBAO",
+      "website": "https://www.cbao.sn",
+      "type": "commercial",
+      "aliases": [
+        "cbao",
+        "compagnie bancaire de l'afrique occidentale"
+      ]
+    },
+    {
+      "name": "Societe Generale Senegal",
+      "code": "SGBS",
+      "slug": "societe-generale-senegal",
+      "short_name": "Societe Generale",
+      "website": "https://societegenerale.sn",
+      "type": "commercial",
+      "aliases": [
+        "sgbs",
+        "societe generale de banques au senegal"
+      ]
+    },
+    {
+      "name": "Ecobank Senegal",
+      "code": "ECO",
+      "slug": "ecobank-senegal",
+      "short_name": "Ecobank",
+      "website": "https://www.ecobank.com/sn/personal-banking",
+      "type": "commercial",
+      "aliases": [
+        "ecobank senegal"
+      ]
+    },
+    {
+      "name": "Bank of Africa Senegal",
+      "code": "BOA",
+      "slug": "bank-of-africa-senegal",
+      "short_name": "BOA",
+      "website": "https://www.boasenegal.com",
+      "type": "commercial",
+      "aliases": [
+        "boa senegal",
+        "bank of africa senegal"
+      ]
+    },
+    {
+      "name": "United Bank for Africa Senegal",
+      "code": "UBA",
+      "slug": "united-bank-for-africa-senegal",
+      "short_name": "UBA",
+      "website": "https://www.ubasenegal.com",
+      "type": "commercial",
+      "aliases": [
+        "uba senegal"
+      ]
+    },
+    {
+      "name": "La Banque Agricole",
+      "code": "LBA",
+      "slug": "la-banque-agricole",
+      "short_name": "LBA",
+      "website": "https://www.labanqueagricole.sn",
+      "type": "commercial",
+      "aliases": [
+        "banque agricole",
+        "cncas"
+      ]
+    },
+    {
+      "name": "Coris Bank International Senegal",
+      "code": "CBI",
+      "slug": "coris-bank-international-senegal",
+      "short_name": "Coris Bank",
+      "website": "https://senegal.coris.bank",
+      "support_email": "corissn@coris-bank.sn",
+      "type": "commercial",
+      "aliases": [
+        "coris bank senegal",
+        "coris"
+      ]
     }
   ]
 }
