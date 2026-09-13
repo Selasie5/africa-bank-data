@@ -63,35 +63,68 @@ africa-bank-data/
 
 All country datasets live inside the **`data/` directory**.
 
-Each country uses the **ISO 3166-1 alpha-2 country code** as the filename.
+Each country uses the **ISO 3166-1 alpha-2 country code** as its folder name.
 
 Example:
 
 ```
-data/NG.json
-data/KE.json
-data/GH.json
+data/NG/
+data/KE/
+data/GH/
 ```
 
 ---
 
-# Dataset Format
+## Adding a new country
 
-Each dataset must follow this format:
+1. Create a new folder under `data/<country-code>/`
+2. Add a `metadata.json`
+3. Add a `banks.json`
+4. Update `data/index.json`
+5. Run the validator
+6. Open a pull request
+
+Example:
+
+```text
+data/UG/
+├── banks.json
+└── metadata.json
+```
+
+## `metadata.json` format
 
 ```json
 {
-  "country": "NG",
+  "country": "UG",
+  "country_name": "Uganda",
+  "currency": "UGX",
+  "central_bank": "Bank of Uganda",
+  "last_updated": "2026-04-01"
+}
+```
+
+## `banks.json` format
+
+```json
+{
+  "country": "UG",
   "banks": [
     {
-      "name": "Access Bank",
-      "code": "044",
-      "slug": "access-bank",
-      "ussd": "*901#"
+      "name": "Example Bank",
+      "code": "001",
+      "slug": "example-bank",
+      "short_name": "Example",
+      "website": "https://www.examplebank.ug",
+      "support_email": "support@examplebank.ug",
+      "type": "commercial",
+      "aliases": ["example"]
     }
   ]
 }
 ```
+
+## Rules for data contributions
 
 ### Required Fields
 
@@ -125,95 +158,60 @@ Example:
 ```
 
 Do not commit Brandfetch client IDs to the repository. See [docs/LOGOS.md](./docs/LOGOS.md) for the full guide.
+| Field | Description |
+|------|------------|
+| short_name | Short display name |
+| ussd | USSD banking code |
+| website | Official website |
+| support_email | Customer support email |
+| type | Bank type (e.g. commercial, microfinance) |
+| aliases | Alternative names |
+| nip_code | NIP institution code |
 
 ---
 
-# Adding a New Country
+### Formatting Rules
 
-1️⃣ Create a new file in `data/` using the **ISO country code**.
-
-Example:
-
-```
-data/KE.json
-```
-
-2️⃣ Add the banks using the standard format.
-
-3️⃣ Verify that:
-
-* bank names are correct
-* bank codes are accurate
-* slugs are unique
-
-4️⃣ Submit a Pull Request.
+- `code` must be a string
+- `slug` must be lowercase and hyphen-separated
+- `aliases` must be an array of strings
+- do not use trailing commas in JSON
+- keep banks sorted alphabetically by `name` where practical
 
 ---
 
-# Adding a New Bank
+## Data Source & Verification
 
-1️⃣ Open the country dataset.
+When adding or editing data:
 
-Example:
+- Prefer official bank websites and public directories
+- Avoid unverified or scraped data when possible
+- If unsure, open an issue first
+- Include your data source in the pull request description
 
-```
-data/NG.json
-```
+---
+## Validation Before Opening a PR
 
-2️⃣ Add the bank inside the `banks` array.
+Run:
 
-Example:
-
-```json
-{
-  "name": "PremiumTrust Bank",
-  "code": "105",
-  "slug": "premiumtrust-bank"
-}
+```bash
+node scripts/validate-data.js
 ```
 
-3️⃣ Submit a Pull Request.
+Fix any errors before submitting your pull request.
 
 ---
 
-# Naming Conventions
+## Pull Request Checklist
 
-Please follow these rules.
+Before opening a PR, ensure:
 
-### Slug format
-
-Use lowercase and hyphens.
-
-Correct:
-
-```
-first-bank
-access-bank
-zenith-bank
-```
-
-Incorrect:
-
-```
-FirstBank
-first_bank
-first bank
-```
-
----
-
-# Data Accuracy
-
-Before submitting data, please verify it using trusted sources such as:
-
-* central bank directories
-* official bank websites
-* payment infrastructure providers
-* reputable fintech APIs
-
-Avoid guessing or using outdated information.
-
-If you're unsure about a field, open an issue instead.
+- [ ] I updated `data/index.json` (if adding a new country)
+- [ ] JSON is valid
+- [ ] Codes are stored as strings
+- [ ] Slugs are lowercase and hyphenated
+- [ ] I ran `node scripts/validate-data.js`
+- [ ] I included data sources or verification notes
 
 ---
 
@@ -283,17 +281,21 @@ help wanted
 We want Africa Bank Data to be **welcoming and inclusive**.
 
 Please:
+## Naming Conventions
 
-* be respectful
-* be constructive
-* support new contributors
-* focus on improving the dataset
+- Country folders use uppercase ISO codes (`NG`, `KE`, `GH`)
+- Logo folders must match country folders (`logos/NG/`)
+- Logo file names must match bank slug (`access-bank.png`)
 
 ---
 
-# Maintainers
+## Good First Contributions
 
-Maintained by contributors across the African developer community.
+- Add missing support emails
+- Add missing official websites
+- Improve aliases
+- Add metadata for a new country
+- Fix formatting issues
 
 ---
 

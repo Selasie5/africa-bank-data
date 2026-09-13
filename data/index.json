@@ -23,6 +23,22 @@
     {
       "code": "EG",
       "name": "Egypt"
+    },
+    {
+      "code": "SN",
+      "name": "Senegal"
+    },
+    {
+      "code": "CI",
+      "name": "Côte d'Ivoire"
+    },
+    {
+      "code": "GM",
+      "name": "The Gambia"
+    },
+    {
+      "code": "SL",
+      "name": "Sierra Leone"
     }
   ]
 }

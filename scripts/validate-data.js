@@ -1,5 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(__dirname, '..');
+const dataRoot = path.join(repoRoot, 'data');
+const schemaRoot = path.join(repoRoot, 'schema');
+
+const ajv = new Ajv({ allErrors: true });
+addFormats(ajv);
+
+const bankSchema = JSON.parse(fs.readFileSync(path.join(schemaRoot, 'bank.schema.json'), 'utf8'));
+const metadataSchema = JSON.parse(fs.readFileSync(path.join(schemaRoot, 'metadata.schema.json'), 'utf8'));
+const validateBank = ajv.compile(bankSchema);
+const validateMetadata = ajv.compile(metadataSchema);
 
 const root = path.resolve('data');
 const indexPath = path.join(root, 'index.json');
@@ -82,14 +98,27 @@ if (!fs.existsSync(indexPath)) {
           if (bank.aliases && !Array.isArray(bank.aliases)) problems.push(`Aliases must be an array for ${bank.name || 'unknown'} in ${code}`);
         }
       }
+
+      if (bank.slug) {
+        if (slugsSeen.has(bank.slug)) problems.push(`${label} duplicate slug "${bank.slug}"`);
+        slugsSeen.add(bank.slug);
+      }
+      if (bank.code) {
+        if (codesSeen.has(bank.code)) problems.push(`${label} duplicate code "${bank.code}"`);
+        codesSeen.add(bank.code);
+      }
     }
   }
 }
 
-if (problems.length) {
-  console.error('Validation failed:\n');
-  for (const problem of problems) console.error(`- ${problem}`);
-  process.exit(1);
-}
+report();
 
-console.log('Dataset validation passed.');
+function report() {
+  if (problems.length) {
+    console.error('Validation failed:\n');
+    for (const problem of problems) console.error(`  - ${problem}`);
+    process.exit(1);
+  }
+  console.log('Dataset validation passed.');
+  process.exit(0);
+}
